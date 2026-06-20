@@ -6,16 +6,16 @@ import (
 )
 
 type Todo struct {
-	Title       string
-	Status   string
+	Title  string
+	Status string
 }
 
 type Todos []Todo
 
 func (todos *Todos) add(title string) {
 	todo := Todo{
-		Title:       title,
-		Status:   "not_done",
+		Title:  title,
+		Status: "not_done",
 	}
 	*todos = append(*todos, todo)
 }
@@ -61,4 +61,10 @@ func (todos *Todos) edit(index int, title string) error {
 
 	t[index].Title = title
 	return nil
+}
+
+func (todos *Todos) print() {
+	for i, t := range *todos {
+		fmt.Printf("[%d] %s — %s\n", i, t.Title, t.Status)
+	}
 }
